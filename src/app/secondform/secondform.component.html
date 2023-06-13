@@ -1,0 +1,68 @@
+<p>secondform works!</p>
+<div class="mb-3 container w-50 shadow mt-5 p-3 pb-1">
+    <h2 class="mb-3 container">Fill Up Form</h2>
+<form #login="ngForm" (ngSubmit)="information(login)" >
+
+    <label for="id1" >first Name</label>
+    <input type="text" class="form-control" id="id1" placeholder="Enter First Name" name="fname" [(ngModel)]="secondobj.firstname"  required pattern="^[a-zA-Z]{3,10}$" #fname="ngModel">
+    <div class="row" *ngIf="fname.invalid&&fname.touched">
+        <div class="invalid-feedback d-block" *ngIf="fname.errors?.['pattern']">Enter min 3 character and maximum 10</div>
+
+    </div>
+    <label for="id1" >Last Name</label>
+    <input type="text" class="form-control" id="id1" placeholder="Enter Last Name" name="lname" [(ngModel)]="secondobj.Lastname" required pattern="[a-zA-Z]{3,10}" #lname="ngModel">
+    <div *ngIf="lname.invalid&&lname.touched">
+        <div class="invalid-feedback d-block" *ngIf="lname.errors?.['pattern']">Enter min 3 character and maximum 10</div>
+    </div>
+    <label for="id1" >Mobile No</label>
+    <input type="text" class="form-control" id="id1" placeholder="Enter Mobile number" name="mobile" [(ngModel)]="secondobj.Mobile" required pattern="[0-9]{10,10}" #mobile="ngModel">
+    <div *ngIf="mobile.invalid&&mobile.touched">
+        <div class="invalid-feedback d-block" *ngIf="mobile.errors?.['pattern']">Enter valid number</div>
+    </div>
+    <!-- <label for="id1" >Age</label>
+    <input type="text" class="form-control" id="id1" placeholder="Enter Age" name="age" [(ngModel)]="secondobj.Age" required pattern="1[8-9]|[2-9]" #age="ngModel">
+   <div *ngIf="age.invalid &&age.touched">
+    <div class="invalid-feedback d-block" *ngIf="age.errors?.['pattern']">only 18+</div>
+   </div> -->
+   <label for="id1" >email</label>
+   <input type="text" class="form-control" id="id1" placeholder="Enter email" name="email" [(ngModel)]="secondobj.email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" #email="ngModel">
+   <div *ngIf="email.invalid&&email.touched">
+    <div class="invalid-feedback d-block" *ngIf="email.errors?.['pattern']">Enter name.@gmail.com</div>
+   </div>
+   <label for="id1" >password</label>
+   <input type="text" class="form-control" id="id1" placeholder="Enter password" name="password" [(ngModel)]="secondobj.password" required pattern="^[a-zA-Z0-9!@#\$%\^\&*_=+-]{8,12}" #password="ngModel">
+   <div *ngIf="password.invalid&&email.touched">
+    <div class="invalid-feedback d-block" *ngIf="password.errors?.['pattern']">Enter special character min 8 character</div>
+   </div>
+   <div class="mb-3">
+    <label>State</label>
+    <select class="form-control" name="state"  [(ngModel)]="secondobj.state" (ngModelChange)="getselect()">
+       
+        <option *ngFor="let res of state"> {{res}}</option>
+    </select>
+    </div>
+    <div class="mb-3">
+        <label>city</label>
+        <select name="cities" class="form-control" [(ngModel)]="secondobj.cities">
+           
+            <option *ngFor="let city of cities"> {{city}}</option>
+        </select>
+        </div>
+        <div class="mb-3">
+            <label>DOB</label>
+            <input name="dob" type="date" [(ngModel)]="secondobj.dob" (ngModelChange)="calculateAge()">
+          </div>
+          <div>
+            <label>Age</label>
+            <input name="age" type="text" [(ngModel)]="secondobj.age" readonly>
+          </div>
+   <div class="form-check">
+    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+    <label class="form-check-label" for="flexCheckDefault">
+      check
+    </label>
+  </div>
+  <button type="submit" [disabled]="!login.valid" class="btn btn-primary" >Next</button>
+  <button type="button" (click)="getData()"   class="btn btn-primary mx-2">GetData</button>
+</form>
+</div>

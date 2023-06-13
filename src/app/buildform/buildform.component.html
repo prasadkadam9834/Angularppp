@@ -1,0 +1,58 @@
+<div class="container w-50 mt-5 shadow">
+<form [formGroup]="signup" (ngSubmit)="save()">
+    <div class="mb-3">
+      <label for="id1" class="form-label">firstname</label>
+      <input type="text" class="form-control" id="id1" aria-describedby="emailHelp" formControlName="firstname">
+      <div class="invalid-feedback d-block" *ngIf="firstname?.invalid&&firstname?.touched">
+        <div  class="invalid-feedback d-block" *ngIf="firstname?.errors?.['required']">it is required</div>
+        <div  class="invalid-feedback d-block" *ngIf="firstname?.errors?.['minlength']">minimum character is 3 </div>
+        <div class="invalid-feedback d-block" *ngIf="firstname?.errors?.['pattern']">Maximum 10 character only</div>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="id2" class="form-label">MobileNo</label>
+      <input type="text" class="form-control" id="id2" formControlName="Mobile" >
+      <div class="invalid-feedback d-block" *ngIf="Mobile?.invalid&&Mobile?.touched">
+        <div class="invalid-feedback d-block" *ngIf="Mobile?.errors?.['pattern']">Enter only 10 digit</div>
+        <div class="invalid-feedback d-block" *ngIf="Mobile?.errors?.['required']">it is required</div>
+      </div>
+    </div>
+    <div class="mb-3">
+        <label for="id3" class="form-label">Age</label>
+        <input type="text" class="form-control" id="id3" formControlName="Age">
+      </div>
+      <label>Address</label>
+      <div class="mb-3" formGroupName="address">
+        <label for="id3" class="form-label">Line1</label>
+        <input type="text" class="form-control" id="id3" formControlName="Line1">
+      </div>
+      <div class="mb-3" formGroupName="address">
+        <label for="id3" class="form-label">Line2</label>
+        <input type="text" class="form-control" id="id3" formControlName="Line2">
+      </div>
+      <div class="mb-3" formGroupName="address">
+        <label>state</label>
+        <select class="form-control"  formControlName="state" (change)="getcitiy()">
+          <option *ngFor="let test of states">{{test}} </option>
+        </select>
+      </div>
+      <div class="mb-3" formGroupName="address">
+        <label>city</label>
+        <select class="form-control" formControlName="city">
+          <option *ngFor="let test of cities">{{test}} </option>
+        </select>
+      </div>
+
+
+
+    <div class="mb-3 form-check">
+      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+      <label class="form-check-label" for="exampleCheck1">Check me out</label>
+    </div>
+    <button type="submit" class="btn btn-primary" (click)="save()" [disabled]="signup.invalid">Submit</button>
+    <!-- <button type="button" class="btn btn-primary mx-2" (click)="getdata()" >GetData</button> -->
+    <button type="button" class="btn btn-primary mx-2" (click)="reset()" >reset</button>
+
+
+  </form>
+</div>

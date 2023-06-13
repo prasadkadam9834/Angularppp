@@ -1,0 +1,31 @@
+<div class="container mt-5 w-50">
+<form [formGroup]="productdetail">
+    <div class="mb-3">
+    <label for="id1">category</label>
+    <select id="id1" formControlName="category" class="form-control">
+        <option value="">select categories</option>
+        <option *ngFor="let res of categoryarr">{{res}}</option>
+    </select>
+</div>
+<div class="mb-3">
+    <label for="id2">product</label>
+    <select id="id2" formControlName="productname"  class="form-control">
+        <option value="">select product</option>
+        <option *ngFor="let final of productarr">{{final}}</option>
+    </select>
+</div>
+<div class="mb-3">
+    <label>Quantity</label>
+    <input type="text" formControlName="quantity"  class="form-control">
+</div>
+<div class="mb-3">
+    <label>Price</label>
+    <input type="text" formControlName="price"  class="form-control">
+</div>
+<div class="mb-3">
+    <label>totalprice</label>
+    <input type="text" readonly formControlName="totalprice"  class="form-control">
+</div >
+    <button type="button" class="btn btn-primary" (click)="getdata()">getdata</button>
+</form>
+</div>

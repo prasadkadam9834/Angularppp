@@ -1,0 +1,26 @@
+<div class="container w-50 shadow mt-5">
+    <h2>Product Details</h2>
+    <form [formGroup]="Product">
+        <label class="form-label">Category</label>
+        <select class="form-control" formControlName="Category">
+            <option value=""></option>
+            <option *ngFor="let res of AllCategory" [value]="res">{{res}}</option>
+        </select>
+        <div *ngIf="Category?.invalid&&Category?.touched">
+            <div class="invalid-feedback d-block" *ngIf="Category?.errors?.['required']">it is required</div>
+        </div>
+        <label class="form-label">ProductName</label>
+        <select class="form-control" formControlName="ProductName">
+            <option value=""></option>
+            <option *ngFor="let result of AllProductName" [value]="result">{{result}}</option>
+        </select>
+        <label class="form-label">Quantity</label>
+        <input type="text" class="form-control" formControlName="Quantity">
+        <label class="form-label">price</label>
+        <input type="text" class="form-control" formControlName="Price">
+        <label class="form-label">totalprice</label>
+        <input type="text" class="form-control" formControlName="totalprice" readonly>
+        <button type="button" class="btn btn-primary mt-2" (click)="productlist()">GetData</button>
+        <button type="button" class="btn btn-primary mt-2 mx-2" (click)="reset()">reset</button>
+    </form>
+</div>

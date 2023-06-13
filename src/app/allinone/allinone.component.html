@@ -1,0 +1,147 @@
+<!-- <h2>template form using ngModel with name attribute</h2> -->
+<!-- <div class="container w-50 shadow mt-5">
+    <form #signup="ngForm" (ngSubmit)="save(signup)">
+        <div class="mb-3">
+            <label for="id1" class="form-label">First Name</label>
+            <input type="text" class="form-control" required pattern="[a-zA-Z]{3,10}" id="id1"
+                aria-describedby="emailHelp" name="fname" ngModel #fname="ngModel">
+        </div>
+        <div class="invalid-feedback d-block" *ngIf="fname.invalid&&fname.touched">
+            <div class="invalid-feedback d-block" *ngIf="fname.errors?.['required']">it is required</div>
+            <div class="invalid-feedback d-block" *ngIf="fname.errors?.['pattern']">min 3 character</div>
+        </div>
+        <div class="mb-3">
+            <label for="id2" class="form-label">Mobile</label>
+            <input type="text" class="form-control" id="id2" required pattern="[0-9]{10,10}" name="mobile" ngModel
+                #mobile="ngModel">
+        </div>
+        <div class="invalid-feedback d-block" *ngIf="mobile.invalid&&mobile.touched">
+            <div class="invalid-feedback d-block" *ngIf="mobile.errors?.['required']">it is required</div>
+            <div class="invalid-feedback d-block" *ngIf="mobile.errors?.['pattern']"> start 6-9 only 10 digit</div>
+        </div>
+        <div class="mb-3">
+            <label for="id3" class="form-label">Age</label>
+            <input type="text" class="form-control" id="id3" required name="age" ngModel #age="ngModel">
+        </div>
+        <div class="invalid-feedback d-block" *ngIf="age.invalid&&age.touched">
+            <div class="invalid-feedback d-block" *ngIf="age.errors?.['required']">it is required</div>
+
+        </div>
+        <div class="mb-3">
+            <label for="id4" class="form-label">Email Id</label>
+            <input type="text" class="form-control" id="id4" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                name="email" ngModel #email="ngModel">
+        </div>
+        <div class="invalid-feedback d-block" *ngIf="email.invalid&&email.touched">
+            <div class="invalid-feedback d-block" *ngIf="email.errors?.['required']">it is required</div>
+            <div class="invalid-feedback d-block" *ngIf="email.errors?.['pattern']">using name@gmail.com</div>
+        </div>
+        <div class="mb-3">
+            <label for="id5" class="form-label">Password</label>
+            <input type="text" class="form-control" id="id5" required pattern="[a-zA-Z0-9]{8,15}" ngModel name="password" #password="ngModel">
+        </div>
+        <div class="invalid-feedback d-block" *ngIf="password.invalid&&password.touched">
+            <div class="invalid-feedback d-block" *ngIf="password.errors?.['pattern']">using character and number min 8</div>
+            <div class="invalid-feedback d-block">it is required</div>
+        </div>
+        <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1" required name="checkbox" ngModel>
+            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="signup.invalid">Submit</button>
+    </form>
+</div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <h2>template form using [(ngModel)]</h2> -->
+<!-- <div class="container w-50 shadow mt-5">
+    <h2>using [(ngModel)]</h2>
+    <form #signup="ngForm" (ngSubmit)="save()">
+        <div class="mb-3">
+            <label for="id1" class="form-label">First Name</label>
+            <input type="text" class="form-control" required pattern="[a-zA-Z]{3,10}" id="id1"
+                aria-describedby="emailHelp" name="fname" [(ngModel)]="templateobj.firstname" #fname="ngModel">
+        </div>
+        <div class="invalid-feedback d-block" *ngIf="fname.invalid&&fname.touched">
+            <div class="invalid-feedback d-block" *ngIf="fname.errors?.['required']">it is required</div>
+            <div class="invalid-feedback d-block" *ngIf="fname.errors?.['pattern']">min 3 character</div>
+        </div>
+        <div class="mb-3">
+            <label for="id2" class="form-label">Mobile</label>
+            <input type="text" class="form-control" id="id2" name="mobile" required pattern="[0-9]{10,10}"
+                [(ngModel)]="templateobj.Mobile" #mobile="ngModel">
+        </div>
+        <div class="invalid-feedback d-block" *ngIf="mobile.invalid&&mobile.touched">
+            <div class="invalid-feedback d-block" *ngIf="mobile.errors?.['required']">it is required</div>
+            <div class="invalid-feedback d-block" *ngIf="mobile.errors?.['pattern']"> start 6-9 only 10 digit</div>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Date of Birth</label><br>
+            <input class="form-control " name="date" [(ngModel)]="templateobj.Dob" type="date"
+                (ngModelChange)="calculateAge()">
+        </div>
+        <div class="mb-3">
+            <label for="id3" class="form-label">Age</label>
+            <input type="text" readonly class="form-control" id="id3" name="age" required #age="ngModel"
+                [(ngModel)]="templateobj.Age">
+        </div>
+        <div class="invalid-feedback d-block" *ngIf="age.invalid&&age.touched">
+            <div class="invalid-feedback d-block" *ngIf="age.errors?.['required']">it is required</div>
+
+        </div>
+        <div class="mb-3">
+            <label>state</label>
+            <select name="state" class="form-control" [(ngModel)]="templateobj.state" (ngModelChange)="getcities()">
+                <option *ngFor="let res of states">{{res}}</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label>city</label>
+            <select name="city" class="form-control" [(ngModel)]="templateobj.city">
+                <option *ngFor="let res of cities">{{res}}</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="id4" class="form-label">Email Id</label>
+            <input type="text" class="form-control" id="id4" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                [(ngModel)]="templateobj.EmailId" name="email" #email="ngModel">
+        </div>
+        <div class="invalid-feedback d-block" *ngIf="email.invalid&&email.touched">
+            <div class="invalid-feedback d-block" *ngIf="email.errors?.['required']">it is required</div>
+            <div class="invalid-feedback d-block" *ngIf="email.errors?.['pattern']">using name@gmail.com</div>
+        </div>
+        <div class="mb-3">
+            <label for="id5" class="form-label">Password</label>
+            <input type="text" class="form-control" id="id5" name="password" required pattern="[a-zA-Z0-9]{8,15}"
+                [(ngModel)]="templateobj.password" #password="ngModel">
+        </div>
+        <div class="invalid-feedback d-block" *ngIf="password.invalid&&password.touched">
+            <div class="invalid-feedback d-block" *ngIf="password.errors?.['pattern']">using character and number min 8
+            </div>
+            <div class="invalid-feedback d-block">it is required</div>
+        </div>
+        <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1" required name="checkbox" ngModel>
+            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="signup.invalid">Submit</button>
+        <button type="button" class="btn btn-primary mx-2" (click)="getdata()">GetData</button>
+
+    </form>
+</div> -->
+
+
+
+
+
+

@@ -1,0 +1,33 @@
+<div class="container w-50 shadow mt-5">
+    <div>
+        <h2>signUp Form</h2>
+    </div>
+    <form #loginform="ngForm" (ngSubmit)="submit(loginform)">
+        <div class=" mt-2">
+           <select name="category" class="form-select" [(ngModel)]="trialobj.category" (ngModelChange)="ngchange()">
+            <option *ngFor="let res of category">{{res}}</option>
+           </select>
+           </div>
+           <div class="mt-2">
+           <select name="productname"  class="form-select" [ngModel]="trialobj.productName">
+            <option *ngFor="let res of productname">{{res}}</option>
+           </select>
+         </div>
+         <div>
+            <label>quantity</label>
+            <input name="email" type="text" [(ngModel)]="trialobj.quantity" class="form-control" (ngModelChange)="calculation()">
+         </div>
+         <div>
+            <label>price</label>
+            <input name="price" type="text"  [(ngModel)]="trialobj.price" class="form-control">
+         </div>
+         <div>
+            <label>totalprice</label>
+            <input name="password" type="text" [(ngModel)]="trialobj.totalprice" class="form-control" readonly >
+         </div>
+         
+
+      <button type="submit"  class="btn btn-primary mt-2">submit</button>
+      <button type="button" (click)="information()" class="btn btn-primary mx-2 mt-2">Get</button>
+    </form>
+</div>

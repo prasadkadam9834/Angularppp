@@ -1,0 +1,62 @@
+<p>firstform works!</p>
+<div class="container w-50 mt-5 shadow p-2 ">
+  <div class="container row">
+    <h2>Employee Form</h2>
+  </div>
+    <form #signup="ngForm" (ngSubmit)="save(signup)">
+<div class="mb-3">
+    <label for="id1" class="form-label">first Name</label>
+    <input type="text" class="form-control" id="id1" placeholder="" required  minlength="3" pattern="^[A-Za-z]{3,10}$" name="fname" ngModel #fname="ngModel">
+  </div>
+  <div class="row" *ngIf="fname.invalid ">
+    <div class="invalid-feedback d-block" *ngIf="fname.touched && fname.errors?.['required']">please enter valid name</div>
+    <div class="invalid-feedback d-block" *ngIf="fname.errors?.['pattern']">maximum 10 character required</div>
+    <div class="invalid-feedback d-block" *ngIf="fname.errors?.['minlength']">minimum 3 character required</div>
+  </div>
+  <div class="mb-3">
+    <label for="id2" class="form-label">Last Name</label>
+    <input type="text" class="form-control" id="id2" placeholder="" pattern="[A-Z-a-z]{3,10}" name="lname" ngModel #lname="ngModel" required>
+  </div>
+  <div class="row" *ngIf="lname.invalid">
+    <div class="invalid-feedback d-block" *ngIf="lname.touched && lname.errors?.['required']">please enter valid name</div>
+    <div class="invalid-feedback d-block" *ngIf="lname.errors?.['pattern']">maximum 10 character required</div>
+    <div class="invalid-feedback d-block" *ngIf="lname.errors?.['maxlength']">minimum 3 character required</div>
+  </div>
+  <div class="mb-3">
+    <label for="id3" class="form-label">Mobile No</label>
+    <input type="text" class="form-control" id="id3" placeholder="Enter 10 digit" required  name="mobile" ngModel pattern="[0-9]{10}" #mobile="ngModel">
+  </div>
+  <div class="row" *ngIf="mobile.invalid">
+    <div class="invalid-feedback d-block" *ngIf="mobile.errors?.['pattern']">only number 10 digit</div>
+  </div>
+  <div class="mb-3">
+    <label for="id5" class="form-label">Age</label>
+    <input type="text" class="form-control" id="id5" placeholder="" required pattern="1[8-9]|[2-9]\d" name="age" ngModel #age="ngModel">
+  </div>
+  <div class="row" *ngIf="age.invalid">
+    <div class="invalid-feedback d-block" *ngIf="age.errors?.['pattern']">only 18+</div>
+  </div>
+  <div class="mb-3">
+    <label for="id4" class="form-label">Email address</label>
+    <input type="email" class="form-control" id="id4" required placeholder="name@gmail.com" name="email" ngModel pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" #email="ngModel">
+  </div>
+  <div class="row" *ngIf="email.invalid">
+    <div class="invalid-feedback d-block" *ngIf="email.touched && lname.errors?.['required']">valid email address</div>
+    <div class="invalid-feedback d-block" *ngIf="email.errors?.['pattern']">using special character @gmail.com</div>
+    <div class="invalid-feedback d-block" *ngIf="email.errors?.['maxlength']">maximum 10 character required</div>
+  </div>
+  <div class="mb-3">
+    <label for="id5" class="form-label">Password</label>
+    <input type="password" class="form-control" id="id5" placeholder="" name="Password" ngModel required pattern="^[a-zA-Z0-9!@#\$%\^\&*_=+-]{8,12}" #password="ngModel">
+  </div>
+  <div class="row" *ngIf="password.invalid">
+    <div class="invalid-feedback d-block" *ngIf="password.touched && lname.errors?.['required']">valid email address</div>
+    <div class="invalid-feedback d-block" *ngIf="password.errors?.['pattern']">using character and number</div>
+    <div class="invalid-feedback d-block" *ngIf="password.errors?.['maxlength']">maximum 10 character required</div>
+  </div>
+  
+ <div>
+  <button type="submit" [disabled]="!signup.valid" class="btn btn-primary">submit</button>
+ </div>
+</form>
+</div>

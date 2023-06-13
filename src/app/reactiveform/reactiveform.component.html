@@ -1,0 +1,80 @@
+<p>reactiveform works!</p>
+<div class="container w-50 mt-5 border 1px solid black">
+  <div>
+    <h2>fill up form</h2>
+  </div>
+
+  <form [formGroup]="signupform" (ngSubmit)="save()">
+    <div class="mb-3">
+      <label for="id1" class="form-label">first Name</label>
+      <input type="text" class="form-control" id="id1" aria-describedby="emailHelp" formControlName="firstname"
+        name="firstname">
+    </div>
+    <div *ngIf="firstname.invalid&&firstname.touched">
+      <div class="invalid-feedback d-block" *ngIf="firstname.errors?.['required']">
+        it is required
+      </div>
+      <div class="invalid-feedback d-block" *ngIf="firstname.invalid">
+        <div class="invalid-feedback d-block" *ngIf="firstname.errors?.['pattern']">only chatacter </div>
+      </div>
+      <div class="invalid-feedback d-block" *ngIf="firstname.invalid&&firstname.touched">
+        <div class="invalid-feedback d-block" *ngIf="firstname.errors?.['minlength']">minimum 3 character</div>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Mobile No</label>
+      <input type="text" class="form-control" id="exampleInputPassword1" formControlName="Mobile" name="Mobile">
+    </div>
+    <div class="invalid-feedback d-block " *ngIf="Mobile.invalid&&Mobile.touched">
+      <div class="invalid-feedback d-block " *ngIf="Mobile.errors?.['required']">it is required</div>
+      <div class="invalid-feedback d-block" *ngIf="Mobile.errors?.['pattern']">only 10 digit </div>
+    </div>
+    <div class="mb-3">
+      <label>age</label>
+      <input name="age" type="text" class="form-control" formControlName="age">
+      <div class="invalid-feedback d-block" *ngIf="age.invalid &&age.touched">
+        <div *ngIf="age.errors?.['required']">required field</div>
+        <div *ngIf="age.errors?.['ageisnot']">only 18+</div>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label>Gender</label>
+
+      <input class="mx-2" name="gender" value="male" type="radio" formControlName="gender">
+      <label>male</label>
+      <input class="mx-2" name="gender" value="female" type="radio" formControlName="gender">
+      <label>Female</label>
+    </div>
+
+    <label>Address</label>
+    <div formGroupName="address">
+      <label>Line1</label>
+      <input type="text" class="form-control" formControlName="Line1">
+      <div  *ngIf="Line1?.invalid&&Line1?.touched ">
+        <div class="invalid-feedback d-block" *ngIf="Line1?.errors?.['required']">it is required</div>
+        <div class="invalid-feedback d-block" *ngIf="Line1?.errors?.['pattern']">min 10 character</div>
+      </div>
+    </div>
+
+
+    <div formGroupName="address">
+      <label>Line2</label>
+      <input type="text" class="form-control" formControlName="Line2">
+    </div>
+
+
+
+
+
+
+    <div class="mb-3 form-check">
+      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+      <label class="form-check-label" for="exampleCheck1">Check</label>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="signupform.invalid" (click)="save()">Submit</button>
+    <button type="button" class="btn btn-primary mx-2" (click)="alldata()">GetData</button>
+
+  </form>
+
+</div>

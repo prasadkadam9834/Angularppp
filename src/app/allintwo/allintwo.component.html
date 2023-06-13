@@ -1,0 +1,51 @@
+<div class="container w-50 shadow mt-5 bg-warning-subtle">
+    <div><h2>Reactive Form</h2></div>
+<form [formGroup]="signup" (ngSubmit)="submit()">
+    <div class="mb-3">
+      <label for="id1" class="form-label">First Name</label>
+      <input type="text" class="form-control" id="id1" formControlName="firstName">
+     </div>
+     <div *ngIf="firstName?.invalid&&firstName?.touched">
+        <div class="invalid-feedback d-block form-label" *ngIf="firstName?.errors?.['required']">Required</div>
+     </div>
+    <div class="mb-3">
+      <label for="id2" class="form-label">Mobile</label>
+      <input type="text" class="form-control" id="id2" formControlName="Mobile">
+    </div>
+    <div *ngIf="Mobile?.invalid&&Mobile?.touched">
+        <div class="invalid-feedback d-block form-label" *ngIf="Mobile?.errors?.['required']">required</div>
+    </div>
+    <div class="mb-3">
+        <label for="id5" class="form-label">state</label>
+        <select class="form-control" id="id5" formControlName="state" >
+            <option *ngFor="let res of states" [value]="res">{{res}}</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="id6" class="form-label">city</label>
+        <select class="form-control" id="id6"  formControlName="city">
+            <option *ngFor="let res of cities" [value]="res">{{res}}</option>
+        </select>
+      </div>
+    <div class="mb-3">
+        <label for="id3" class="form-label">Email Id</label>
+        <input type="text" class="form-control" id="id3" formControlName="EmailId">
+      </div>
+      <div *ngIf="EmailId?.invalid&&EmailId?.touched">
+        <div class="invalid-feedback d-block form-label" *ngIf="EmailId?.errors?.['required']">Required</div>
+     </div>
+      <div class="mb-3">
+        <label for="id4" class="form-label">Password</label>
+        <input type="text" class="form-control" id="id4" formControlName="password">
+      </div>
+      <div *ngIf="password?.invalid&&password?.touched">
+        <div class="invalid-feedback d-block form-label" *ngIf="password?.errors?.['required']">Required</div>
+     </div>
+    <div class="mb-3 form-check">
+      <input type="checkbox" class="form-check-input" id="exampleCheck1" required >
+      <label class="form-check-label" for="exampleCheck1">Check me out</label>
+    </div>
+    <button type="submit" class="btn btn-primary" (click)="submit()" [disabled]="signup.invalid">Submit</button>
+    <button type="button" class="btn btn-primary mx-2" (click)="getdata()">GetData</button>  
+</form>
+</div>
