@@ -20,6 +20,7 @@ import { PagenotComponent } from './pagenot/pagenot.component';
 import { PageisComponent } from './pageis/pageis.component';
 import { InputComponent } from './input/input.component';
 import { OutputComponent } from './output/output.component';
+import { GitcComponent } from './gitc/gitc.component';
 
 
 
@@ -42,6 +43,7 @@ import { OutputComponent } from './output/output.component';
     PageisComponent,
     InputComponent,
     OutputComponent,
+    GitcComponent,
     
    
   ],
